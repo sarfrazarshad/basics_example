@@ -1,0 +1,19 @@
+@media (min-width: 980px){
+body{
+  padding-top: 60px; 
+}
+}
+body{
+font-family: 'OpenSans', Helvetica, Arial, sans-serif;
+}
+.heading, .subheading{
+font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+text-align:center;
+} 
+.Create{
+color: #0000FF;
+}
+.box{
+padding-top: 5.5%;
+padding-bottom:2.5%
+}

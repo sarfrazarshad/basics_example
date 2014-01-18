@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title=QubeeCon
+    meta(name="viewport",content="width-device-width, initial-scale=1.0")
+    link(rel="stylesheet",href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css")
+    link(rel='stylesheet', href='style.css')
+    script(src='https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js')
+    script(src='https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js')  
+  
+ body
+ 
+      div(class="navbar navbar-inverse navbar-fixed-top")
+        div(class="navbar-inner")
+          div(class="container")
+            button(type="button",class="btn btn-navbar",data-toggle="collapse",data-target=".nav-collapse")
+              span(class="icon-bar")
+              span(class="icon-bar")
+              span(class="icon-bar")
+             
+            a(class="brand",href="#") QubeeCon
+            div(class="nav-collapse collapse",style="height: 0px")
+              ul(class="nav")
+                li
+                  a(href="/conference.html") Conference
+                li
+                  a(href="#about") About
+                li
+                  a(href="/logout") Logout
+   div<class="container">
+     div(class="span12")
+       div(class="row-fluid heading")
+         h1 Welcome #{User.email} to Qubee Conferencing centre.
+       div(class="row-fluid subheading") 
+         p Please create a room, or select an existing room to start your conference 
+     div(class="span4 offset8 box")
+       div(class="row-fluid Create")
+         h3 Create A New Room
+       div(class="row-fuid")
+         form(role='form', action="/login",method="post", style='max-width: 300px;')
+         .form-group
+           input.form-control(type='text', name="room_name", placeholder='Enter Name of the Room')
+         .form-group
+         button.btn.btn-default(type='submit') Create Room
+       &nbsp;

@@ -1,0 +1,12 @@
+@media (min-width: 980px){
+body{
+  padding-top: 60px; 
+}
+}
+body{
+font-family: 'OpenSans', Helvetica, Arial, sans-serif;
+}
+.heading, .subheading{
+font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+text-align:center;
+} 

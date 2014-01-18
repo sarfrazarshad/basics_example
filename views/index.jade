@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= QubeeCon
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel="stylesheet",href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css")
+    link(rel='stylesheet', href='style.css')
+    script(src='https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js')
+    script(src='https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js')
+
+
+  body
+    div(class="navbar navbar-inverse navbar-fixed-top")
+        div(class="navbar-inner")
+          div(class="container")
+            button(type="button",class="btn btn-navbar",data-toggle="collapse",data-target=".nav-collapse")
+              span(class="icon-bar")
+              span(class="icon-bar")
+              span(class="icon-bar")
+
+            a(class="brand",href="#") QubeeCon
+            div(class="nav-collapse collapse",style="height: 0px")
+              ul(class="nav")
+                li(class="active")
+                  a(href="/") Home
+                li
+                  a(href="/login") Login
+                li
+                  a(href="/register") Register
+
+
+
+  .container
+    div(class="row-fluid heading")
+      div(class="span12")
+        h1 Welcome to Qubee Conferencing center.
+    div(class= "row-fluid subheading")
+      p.lead Are are pleased to present a state of the art video Conferencing Soltion. Please login/register to join your conference.
+    
+    a(href="/") Go home
+    br
+    a(href="/ping") Ping
+    br
+    br
+    if (!user)
+      a(href="/login") Login
+      br
+      a(href="/register") Register
+    if (user)
+      p You are currently logged in as #{user.username}
+      a(href="/logout") Logout
+
+// script(src='http://code.jquery.com/jquery.js')
+//  script(src='/bootstrap.min.js')
+
+
