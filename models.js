@@ -7,10 +7,14 @@ var UserSchema= new Schema({
     email: {type: String, unique: true, required: true},
     hashed_password: {type:  String, required: true},
     organization: {type: String, required: true},
-    rooms: [{type:Schema.ObjectId}],
     salt: String
 
 });
+var RoomSchema=new Schema({
+    Room_id: {type: Schema.ObjectId, required:true},
+    organization: {type: String, required: true}
+});
+
 
    UserSchema.virtual('password').get(function(){
        return this._password; 
@@ -56,5 +60,6 @@ UserSchema.methods.authenticate=function(plainText) {
   
 
 var User=mongoose.model('User', UserSchema);
-
+var Room=mongoose.model('Room', RoomSchema);
 module.exports=User;
+module.exports=Room;

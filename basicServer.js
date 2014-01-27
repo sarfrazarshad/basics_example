@@ -7,14 +7,17 @@ https = require("https"),
 path= require('path'),
 config = require('./../../licode_config');
 var mongoose = require('mongoose');
+var models = require ('./models.js');
+var User = mongoose.model('User');
+var Room = mongoose.model('Room');
 //var mongoStore=require('connect-mongodb');
 mongoose.connect('mongodb://localhost/Users');
-var User = require('./models.js');
 
 var Db = require('mongodb').Db
   , Server = require('mongodb').Server
   , server_config = new Server('localhost', 27017, {auto_reconnect: true, native_parser: true})
   , db = new Db('test', server_config, {})
+//, db='Users'
   , mongoStore = require('connect-mongodb');
  
  
@@ -102,13 +105,25 @@ N.API.getRooms(function (roomlist) {
 
 app.post('/createToken/', function (req, res) {
     "use strict";
-    var room = myRoom,
+    var room,
         username = req.body.username,
         role = req.body.role;
-    N.API.createToken(room, username, role, function (token) {
-        console.log(token);
-        res.send(token);
-    });
+   // console.log("organization" + req.body.organizatio);
+    User.findById(req.session.user_id,function(err,user){
+	console.log('userfound' + user);
+	if (user && !err){
+	    Room.findOne({organization: user.organization}, function(err,room1){
+		console.log('roomfound ' + room1); 
+		if(room1 && !err){
+		    room = room1.Room_id;
+		    N.API.createToken(room, username, role, function (token) {
+			console.log(token);
+			res.send(token);
+			});
+		    }
+		});
+	    }
+	});
 });
 
 
@@ -177,11 +192,27 @@ if (!err && user && user.authenticate(req.body.password))
 
 app.post('/register.:format?', function(req, res) {
   var user = new User();
+    var myRoom1;
     user.email=req.body.email;
     user.password=req.body.password;
     user.organization=req.body.organization;
- // console.log(req.body.user);
-    user.savee(userSaved, userSaveFailed);
+    User.findOne({organization: req.body.organization},function(err,user1){
+	if (!err && !user1){
+	    N.API.createRoom('myRoom1', function (roomID) {
+		console.log('Created room ', myRoom);
+		var room=new Room();
+		room.organization= user.organization;
+		room.Room_id=roomID._id;
+		room.save();
+            });
+	    }
+	if (!err && user1)
+	    console.log("organization exists no new room created"); 
+
+    });
+    
+    user.savee(userSaved,userSaveFailed);
+	
 
   function userSaved(err) {
      // console.log("Saved");
