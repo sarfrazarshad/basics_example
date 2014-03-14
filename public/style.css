@@ -17,3 +17,13 @@ color: #0000FF;
 padding-top: 5.5%;
 padding-bottom:2.5%
 }
+.footer{
+    color: #cccccc;
+    text-align:center;
+}
+.footer p{
+    font-size: 11px;
+}
+.footer a{
+    color: #ccccff;
+}

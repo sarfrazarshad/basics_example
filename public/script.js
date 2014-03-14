@@ -45,6 +45,7 @@ window.onload = function () {
   createToken("user", "presenter", function (response) {
     var token = response;
     console.log(token);
+//     console.log(user);
     room = Erizo.Room({token: token});
 
     localStream.addEventListener("access-accepted", function () {
@@ -67,6 +68,7 @@ window.onload = function () {
         var stream = streamEvent.stream;
         var div = document.createElement('div');
 	  div.setAttribute("style", "width: 320px; height: 240px; display: inline-block");
+	  //div.setAttribute("class", "offset1")
 	  div.setAttribute("id", "test" + stream.getID());
           document.getElementById('list').appendChild(div);
 	  stream.show("test" + stream.getID());

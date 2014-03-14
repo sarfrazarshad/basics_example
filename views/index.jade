@@ -36,22 +36,35 @@ html
       div(class="span12")
         h1 Welcome to Qubee Conferencing center.
     div(class= "row-fluid subheading")
-      p.lead Are are pleased to present a state of the art video Conferencing Soltion. Please login/register to join your conference.
+        p.lead Are are pleased to present a state of the art video Conferencing Soltion. Please login/register to join your conference.
+    br
+    div(class="row-fluid") 
+      div(class ="span12")
+        div(class="span7")
+           img(class="img-polaroid" src="image.jpg")
+        div(class="span4 offset1")
+          br
+          br
+          h3(style='margin: 0px') Login
+          if(foo=='1')
+            p(style='color: #B22222') Error: Username or password not correct!!
+          br
+          form(role='form', action="/login",method="post", style='max-width: 300px;')
+            .form-group
+              input.form-control(type='text', name="email", placeholder='Enter Username')
+            .form-group
+              input.form-control(type='password', name="password", placeholder='Password')
+            button.btn.btn-default(type='submit') Submit
+            &nbsp;
+            a(href='/')
+              button.btn.btn-primary(type="button") Cancel
     
-    a(href="/") Go home
-    br
-    a(href="/ping") Ping
-    br
-    br
-    if (!user)
-      a(href="/login") Login
-      br
-      a(href="/register") Register
-    if (user)
-      p You are currently logged in as #{user.username}
-      a(href="/logout") Logout
+    div(class="row-fluid footer")
+         div(class="span12")
+           br
+           br
+           p This work is licensed copy right "sarfraz.arshad@qubee.com.pk"  
 
+        
 // script(src='http://code.jquery.com/jquery.js')
 //  script(src='/bootstrap.min.js')
-
-

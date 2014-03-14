@@ -116,6 +116,8 @@ app.post('/createToken/', function (req, res) {
 		console.log('roomfound ' + room1); 
 		if(room1 && !err){
 		    room = room1.Room_id;
+		   // username = user.email,
+		    role = req.body.role;
 		    N.API.createToken(room, username, role, function (token) {
 			console.log(token);
 			res.send(token);
@@ -189,6 +191,7 @@ if (!err && user && user.authenticate(req.body.password))
 });
 });    
   
+
 
 app.post('/register.:format?', function(req, res) {
   var user = new User();
